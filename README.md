@@ -1,1 +1,1 @@
-# OBS Ccontrol
+# OBS Control
