@@ -22,6 +22,9 @@ import InputText from 'primevue/inputtext'
 import SelectButton from 'primevue/selectbutton'
 import Dialog from 'primevue/dialog'
 
+import 'primevue/resources/themes/nova/theme.css'
+import 'primeicons/primeicons.css'
+
 app.use(PrimeVue)
     .component('Dropdown', Dropdown)
     .component('Panel', Panel)
