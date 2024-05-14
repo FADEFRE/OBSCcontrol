@@ -1,13 +1,10 @@
 <script setup>
 import Intro from '../components/Intro.vue';
-import workarea from '../components/workarea.vue';
 import camSettings from '@/components/settingsPages/camSettings.vue';
 </script>
 
 <template>
-    <workarea>
         <camSettings></camSettings>
-    </workarea>
 </template>
 
 <style lang="scss">

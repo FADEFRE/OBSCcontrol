@@ -1,9 +1,11 @@
 <script setup>
-import fourCamsGrid from './views/twoCamsGrid.vue'
+import twoCamsGrid from './views/twoCamsGrid.vue'
 </script>
 
 <template>
-    <fourCamsGrid></fourCamsGrid>
+    <div class="page">
+        <twoCamsGrid></twoCamsGrid>
+    </div>
 </template>
 
 <style lang="scss">
@@ -11,4 +13,13 @@ import fourCamsGrid from './views/twoCamsGrid.vue'
 @use '@/assets/styles/global' as *;
 @use '@/assets/styles/components' as *;
 
+.page {
+    display: flex;
+    padding: 4rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    background: $color-background;
+    align-self: stretch;
+}
 </style>

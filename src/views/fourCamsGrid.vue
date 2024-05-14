@@ -2,13 +2,10 @@
 import topNav from './topNav.vue';
 import menu from '../components/menu/menu.vue';
 import settingsArea from '../settingarea.vue'
-import workArea from '../components/workarea.vue'
 import camSettings from '../components/settingsPages/camSettings.vue'
 </script>
 
 <template>
-    <body>
-        <workArea>
             <topNav></topNav>
             <div>
                 <menu></menu>
@@ -23,8 +20,6 @@ import camSettings from '../components/settingsPages/camSettings.vue'
                     </div>
                 </settingsArea>
             </div>
-        </workArea>
-    </body>
 
 </template>
 
