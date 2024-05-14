@@ -41,7 +41,10 @@
     </div>
 </template>
 
-<style>
+<style lang="scss">
+@use '/src/assets/styles/util' as *;
+@use '/src/assets/styles/global' as *;
+@use '/src/assets/styles/components' as *;
 
 .camSettingsBody{
     display: inline-flex;

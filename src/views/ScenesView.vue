@@ -37,7 +37,7 @@ onBeforeMount(() => {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 @media (min-width: 1024px) {
   .about {
     min-height: 100vh;

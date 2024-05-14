@@ -10,7 +10,11 @@ import camSettings from '@/components/settingsPages/camSettings.vue';
     </workarea>
 </template>
 
-<style>
+<style lang="scss">
+@use '../assets/styles/util' as *;
+@use '../assets/styles/global' as *;
+@use '../assets/styles/components' as *;
+
 
 @font-face {
     font-family: 'Inter';

@@ -2,7 +2,10 @@
     <div class=settingsarea></div>
 </template>
 
-<style>
+<style lang="scss">
+@use '../assets/styles/util' as *;
+@use '../assets/styles/global' as *;
+@use '../assets/styles/components' as *;
 
 .setttingsarea{
     display: flex;

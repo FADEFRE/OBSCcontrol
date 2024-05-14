@@ -28,7 +28,10 @@ import camSettings from '../components/settingsPages/camSettings.vue'
 
 </template>
 
-<style>
+<style lang="scss">
+@use '../assets/styles/util' as *;
+@use '../assets/styles/global' as *;
+@use '../assets/styles/components' as *;
 
 .camsWrapper{
     display: flex;

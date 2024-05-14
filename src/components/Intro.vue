@@ -23,8 +23,10 @@
 
 </template>
 
-<style scoped lang="scss">
+<style  lang="scss">
 @use '../assets/styles/util' as *;
+@use '../assets/styles/global' as *;
+@use '../assets/styles/components' as *;
 
 .topnav {
   display: flex;
