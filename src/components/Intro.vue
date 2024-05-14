@@ -24,7 +24,7 @@
 </template>
 
 <style scoped lang="scss">
-
+@use '../assets/styles/util' as *;
 
 .topnav {
   display: flex;

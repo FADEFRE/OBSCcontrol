@@ -6,6 +6,9 @@
 
 
 <style scoped lang="scss">
+@use '../assets/styles/util' as *;
+@use '../assets/styles/global' as *;
+
 .page {
     display: flex;
     padding: 4rem;
