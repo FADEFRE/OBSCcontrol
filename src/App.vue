@@ -1,10 +1,6 @@
-<script setup>
-import twoCamsGrid from './views/twoCamsGrid.vue'
-</script>
-
 <template>
-    <div class="page">
-        <twoCamsGrid></twoCamsGrid>
+    <div>
+        <router-view class="main-content" />
     </div>
 </template>
 

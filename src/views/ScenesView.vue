@@ -5,9 +5,6 @@ import {
   } from '@/obs-websocket';
 import { ref, onBeforeMount } from "vue";
 
-const value1 = ref();
-const value2 = ref();
-
 const sceneList = ref([]);
 
 

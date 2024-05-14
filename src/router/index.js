@@ -15,6 +15,11 @@ const router = createRouter({
       component: () => import('../views/ScenesView.vue')
     },
     {
+      path: '/twocamsgrid',
+      name: 'twocamsgrid',
+      component: () => import('../views/twoCamsGrid.vue')
+    },
+    {
       path: '/setup',
       name: 'setup',
       component: () => import('../views/SetupView.vue')
