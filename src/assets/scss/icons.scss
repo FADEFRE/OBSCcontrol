@@ -1,0 +1,27 @@
+
+
+.iconWrapper{
+    display: flex;
+    padding: 0.5rem;
+    align-items: flex-start;
+    gap: 0.5rem;
+
+    border-radius: 0.5rem;
+    background: $secondary;
+}
+
+.icon24{
+    display: flex;
+    width: 1.5rem;
+    height: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon32{
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    justify-content: center;
+    align-items: center;
+}
