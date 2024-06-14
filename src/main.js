@@ -15,6 +15,7 @@ const app = createApp(App)
 
 // PrimeVue setup
 import PrimeVue from 'primevue/config'
+import CascadeSelect from 'primevue/cascadeselect'
 import Dropdown from 'primevue/dropdown'
 import Panel from 'primevue/panel'
 import Button from 'primevue/button'
@@ -26,6 +27,7 @@ import 'primevue/resources/themes/nova/theme.css'
 import 'primeicons/primeicons.css'
 
 app.use(PrimeVue)
+    .component('CascadeSelect', CascadeSelect)
     .component('Dropdown', Dropdown)
     .component('Panel', Panel)
     .component('Button', Button)

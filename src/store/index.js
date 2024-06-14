@@ -3,7 +3,7 @@ import { defineStore } from 'pinia';
 export const useOBSStore = defineStore('obs', {
     state: () => ({
         currentScene: "",
-        listOfScenes: null,
+        listOfScenes: [null],
         numberOfScenes: 0,
     }),
     

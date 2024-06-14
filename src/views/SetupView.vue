@@ -38,7 +38,7 @@ async function run() {
         <InputText type="text" v-model="value2" />
         <Button label="get Name" @click="getNameOfScene(value2)" />
       </div> 
-      <Button label="All Scenes" @click="run" />
+      <Button label="All Scenes" @click="getAllSceneNames" />
       <div >
         <RouterLink to="/scenes">All Scenes</RouterLink>
       </div>

@@ -1,5 +1,29 @@
 <script setup>
-import Dropdown from 'primevue/dropdown';
+import { ref, onBeforeMount } from "vue";
+import { 
+    requestScenes,
+    getAllSceneNames,
+    getSceneItems,
+    } from '@/obs-websocket';
+
+onBeforeMount(() => {
+    before()
+})
+
+let viewOptions = []
+const viewOptionsRef = ref([])
+
+async function before() {
+    await requestScenes()
+    viewOptions = await getSceneItems("scene 2")
+    viewOptionsRef.value = viewOptions
+    console.log(viewOptions)
+}
+
+const view = ref()
+
+
+
 </script>
 
 <template>
@@ -19,7 +43,7 @@ import Dropdown from 'primevue/dropdown';
             </div>
         </div>
         <div class="camSettingsCam">
-            <Dropdown v-model="selectedCity" :options="cities" optionLabel="name" placeholder="Select View" class="camSettingsDropdown" />   
+            <Dropdown v-model="view" :options="viewOptionsRef" optionLabel="name" placeholder="Select View" class="camSettingsDropdown" />   
         </div>
     </div>
 </template>

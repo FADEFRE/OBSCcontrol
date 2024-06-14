@@ -21,6 +21,7 @@ async function disconnectFromObs() {
 
 async function requestScenes() {
     try {
+        await connectToObs()
         const response = await obsConnection.call('GetSceneList');
         console.log(response);
         const store = useOBSStore();
@@ -112,8 +113,44 @@ async function getAllSceneNames() {
                 const name = await getNameOfScene(index);
                 arr.push(name);
             }
+            console.log("scenes: " + arr)
             return arr;
         }
+    } catch(error) {
+        errorHandler(error);
+    }
+}
+
+async function getNumberOfScenes() {
+    try {
+        await connectToObs();
+        await requestScenes();
+        const store = useOBSStore();
+        const length = store.getNumberOfScenes;
+        return length;
+    } catch(error) {
+        errorHandler(error);
+    }
+}
+
+async function getSceneItems(scene) {
+    try {
+        await connectToObs();
+        await requestScenes();
+        const store = useOBSStore();
+        const length = store.getNumberOfScenes;
+
+        let formattedItems = []
+
+        const response = await obsConnection.call('GetSceneItemList', {sceneName: scene});
+        const sceneItems = response.sceneItems;
+        for (let index = 0; index < sceneItems.length; index++) {
+            const item = sceneItems[index];
+            const formattedSingleItem = { name: item.sourceName, sceneItemId: item.sceneItemId, isGroup: item.isGroup, isActive: item.sceneItemEnabled }
+            formattedItems.push(formattedSingleItem)
+        }
+        console.log(formattedItems)
+        return formattedItems;
     } catch(error) {
         errorHandler(error);
     }
@@ -137,4 +174,6 @@ export {
     getCurrentSceneIndex,
     getAllSceneNames,
     setCurrentScene,
+    getNumberOfScenes,
+    getSceneItems,
 };
