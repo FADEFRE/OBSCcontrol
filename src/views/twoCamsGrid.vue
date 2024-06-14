@@ -1,7 +1,6 @@
 <script setup>
 import topNav from '../components/menu/topNav.vue';
 import MenuBlock from '@/components/menu/MenuBlock.vue';
-import settingsArea from '../components/settingarea.vue'
 import camSettings from '../components/settingsPages/camSettings.vue'
 </script>
 
@@ -9,12 +8,12 @@ import camSettings from '../components/settingsPages/camSettings.vue'
     <topNav />
     <div class="sidenav">
         <MenuBlock />
-        <settingsArea>
+        <div class=settingsarea>
             <div class="camsWrapper">
                 <camSettings></camSettings>
                 <camSettings></camSettings>
             </div>
-        </settingsArea>
+        </div>
     </div>
 </template>
 
@@ -27,5 +26,24 @@ import camSettings from '../components/settingsPages/camSettings.vue'
     display: flex;
     align-items: flex-start;
     gap: 1rem;
+}
+
+.sidenav{
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+
+.settingsarea{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex: 1 0 0;
+    align-self: stretch;
+    height: 100%;
 }
 </style>

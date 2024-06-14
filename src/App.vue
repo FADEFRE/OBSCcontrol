@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="page">
         <router-view class="main-content" />
     </div>
 </template>
@@ -17,5 +17,6 @@
     gap: 0.5rem;
     background: $color-background;
     align-self: stretch;
+    height: 100dvh;
 }
 </style>

@@ -23,6 +23,7 @@ import menuItem from './menuItem.vue';
     align-items: flex-start;
     gap: 1rem;
     align-self: stretch;
+    height: 100%;
 }
 
 </style>

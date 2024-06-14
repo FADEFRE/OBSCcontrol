@@ -1,7 +1,7 @@
 <script setup>
 import topNav from '../components/menu/topNav.vue';
 import MenuBlock from '@/components/menu/MenuBlock.vue';
-import camSettings from '../components/settingsPages/camSettings.vue'
+import AutoSwitcherOption from '@/components/settingsPages/AutoSwitcherOption.vue'
 </script>
 
 <template>
@@ -9,9 +9,12 @@ import camSettings from '../components/settingsPages/camSettings.vue'
     <div class="sidenav">
         <MenuBlock />
         <div class=settingsarea>
-            <div class="camsWrapper">
-                <camSettings></camSettings>
-            </div>
+            <AutoSwitcherOption />
+            <AutoSwitcherOption />
+            <AutoSwitcherOption />
+            <AutoSwitcherOption />
+            <AutoSwitcherOption />
+            <AutoSwitcherOption />
         </div>
     </div>
 </template>
@@ -20,12 +23,6 @@ import camSettings from '../components/settingsPages/camSettings.vue'
 @use '../assets/styles/util' as *;
 @use '../assets/styles/global' as *;
 @use '../assets/styles/components' as *;
-
-.camsWrapper{
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-}
 
 .sidenav{
     display: flex;
@@ -38,8 +35,7 @@ import camSettings from '../components/settingsPages/camSettings.vue'
 .settingsarea{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap: 1rem;
     flex: 1 0 0;
     align-self: stretch;

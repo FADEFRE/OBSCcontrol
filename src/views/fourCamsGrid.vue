@@ -1,26 +1,24 @@
 <script setup>
-import topNav from './topNav.vue';
-import menu from '../components/menu/menu.vue';
-import settingsArea from '../settingarea.vue'
+import topNav from '../components/menu/topNav.vue';
+import MenuBlock from '@/components/menu/MenuBlock.vue';
 import camSettings from '../components/settingsPages/camSettings.vue'
 </script>
 
 <template>
-            <topNav></topNav>
-            <div>
-                <menu></menu>
-                <settingsArea>
-                    <div class="camsWrapper">
-                        <camSettings></camSettings>
-                        <camSettings></camSettings>
-                    </div>
-                    <div class="camsWrapper">
-                        <camSettings></camSettings>
-                        <camSettings></camSettings>
-                    </div>
-                </settingsArea>
+    <topNav />
+    <div class="sidenav">
+        <MenuBlock />
+        <div class=settingsarea>
+            <div class="camsWrapper">
+                <camSettings></camSettings>
+                <camSettings></camSettings>
             </div>
-
+            <div class="camsWrapper">
+                <camSettings></camSettings>
+                <camSettings></camSettings>
+            </div>
+        </div>
+    </div>
 </template>
 
 <style lang="scss">
@@ -34,4 +32,22 @@ import camSettings from '../components/settingsPages/camSettings.vue'
     gap: 1rem;
 }
 
+.sidenav{
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+
+.settingsarea{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex: 1 0 0;
+    align-self: stretch;
+    height: 100%;
+}
 </style>
