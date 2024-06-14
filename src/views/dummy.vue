@@ -3,8 +3,21 @@ import Intro from '../components/Intro.vue';
 import camSettings from '@/components/settingsPages/camSettings.vue';
 </script>
 
+<script>
+import CamSettings from '@/components/settingsPages/camSettings.vue'
+export default {
+    name: 'CamSlotName',
+    components: {
+        camSettings,
+    },
+    setup() {
+        const camSlotName = ref ('')
+    }
+}
+</script>
+
 <template>
-        <camSettings></camSettings>
+        <camSettings :camSlotName="Test"/>
 </template>
 
 <style lang="scss">

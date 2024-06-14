@@ -29,7 +29,7 @@ const view = ref()
 <template>
     <div class="camSettingsBody">
         <div class="camSettingsTopWrapper">
-            <p class="interbold16">Cam Slot 1</p>
+            <p class="interbold16"> {{ camSlotName }} </p>
             <div class="camSettingsOptionsWrapper">
                 <div class="iconWrapper">
                     <img class="icon" src="/src/assets/icons/microphoneOn.svg">                     
