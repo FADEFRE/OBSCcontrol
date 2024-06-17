@@ -1,14 +1,13 @@
 <script setup>
+import { connectToObs, disconnectFromObs } from '@/obs-websocket';
 import { 
-  connectToObs, 
-  disconnectFromObs, 
   requestScenes,
   getIndexOfScene,
   getNameOfScene,
   getCurrentSceneName,
   getCurrentSceneIndex,
   getAllSceneNames,
-  } from '@/obs-websocket';
+  } from '@/obs-websocket/request';
 import { ref } from "vue";
 
 const value1 = ref();

@@ -1,12 +1,11 @@
 <script setup>
+import { connectToObs } from '@/obs-websocket';
+import { ref, onBeforeMount } from "vue";
 import { 
-  connectToObs,
   requestScenes,
   setCurrentScene,
   getAllSceneNames,
-  getSceneItems,
-  } from '@/obs-websocket';
-import { ref, onBeforeMount } from "vue";
+  getSceneItems, } from '@/obs-websocket/request';
 
 let sceneList = []
 const sceneRef = ref([])

@@ -4,7 +4,7 @@ import {
     requestScenes,
     getAllSceneNames,
     getSceneItems,
-    } from '@/obs-websocket';
+    } from '@/obs-websocket/request';
 
 onBeforeMount(() => {
     before()
