@@ -6,7 +6,7 @@ import {
     getAllSceneNames,
     getSceneItems,
     } from '@/obs-websocket/request';
-    
+
 import { setSceneItemActive } from '@/obs-websocket/buttonLogic';
 
 onBeforeMount(() => {
