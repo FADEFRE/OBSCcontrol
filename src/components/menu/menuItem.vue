@@ -1,7 +1,16 @@
+<script setup>
+const props = defineProps({
+    routeName: {
+        type: String,
+        required: true,
+    }
+})
+</script>
+
 <template>
-    <div class="menuButton">
-        <p class="intersemibold16">Placeholder</p>
-    </div>
+    <router-link :to="{name: props.routeName}" class="menuButton">
+        <p class="intersemibold16">{{ props.routeName }}</p>
+    </router-link>
 </template>
 
 <style lang="scss">
@@ -19,6 +28,7 @@
 
     border-radius: 0.5rem;
     background: #1A1A1A;
+    text-decoration: none; 
 }
 
 </style>
