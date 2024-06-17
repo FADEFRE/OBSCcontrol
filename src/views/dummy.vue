@@ -1,23 +1,33 @@
 <script setup>
-import Intro from '../components/Intro.vue';
 import camSettings from '@/components/settingsPages/camSettings.vue';
-</script>
+import { connectToObs } from '@/obs-websocket/index';
+import { onBeforeMount } from "vue";
+import { requestScenes } from '@/obs-websocket/request';
 
-<script>
-import CamSettings from '@/components/settingsPages/camSettings.vue'
-export default {
-    name: 'CamSlotName',
-    components: {
-        camSettings,
-    },
-    setup() {
-        const camSlotName = ref ('')
-    }
+onBeforeMount(() => {
+    before()
+})
+
+
+async function before() {
+    await connectToObs()
+    await requestScenes()
 }
+
+const slot1 = "Slot_1"
+const slot2 = "Slot_2"
+const slot3 = "Slot_3"
+const slot4 = "Slot_4"
 </script>
 
 <template>
-        <camSettings :camSlotName="Test"/>
+    <div>
+        <Button label="reconnect" @click="before()" />
+    </div>
+        <camSettings :camSlotName="slot1"/>
+        <camSettings :camSlotName="slot2"/>
+        <camSettings :camSlotName="slot3"/>
+        <camSettings :camSlotName="slot4"/>
 </template>
 
 <style lang="scss">

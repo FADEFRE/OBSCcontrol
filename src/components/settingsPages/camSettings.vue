@@ -1,14 +1,23 @@
 <script setup>
 import { connectToObs } from '@/obs-websocket/index';
-import { ref, onBeforeMount } from "vue";
+import { ref, onBeforeMount, toRaw } from "vue";
 import { 
     requestScenes,
     getAllSceneNames,
     getSceneItems,
     } from '@/obs-websocket/request';
+    
+import { setSceneItemActive } from '@/obs-websocket/buttonLogic';
 
 onBeforeMount(() => {
     before()
+})
+
+const props = defineProps({
+    camSlotName: {
+        type: String,
+        required: true,
+    }
 })
 
 let viewOptions = []
@@ -17,21 +26,27 @@ const viewOptionsRef = ref([])
 async function before() {
     await connectToObs()
     await requestScenes()
-    viewOptions = await getSceneItems("Slot_1")
+    viewOptions = await getSceneItems(props.camSlotName)
     viewOptionsRef.value = viewOptions
     console.log(viewOptions)
 }
 
-const view = ref()
+const selectedView = ref()
 
 
+async function setSelectedView() {
+  console.log("test")
+  const raw = toRaw(selectedView.value)
+  console.log(raw)
+  await setSceneItemActive(props.camSlotName, raw.name)
+}
 
 </script>
 
 <template>
     <div class="camSettingsBody">
         <div class="camSettingsTopWrapper">
-            <p class="interbold16"> {{ camSlotName }} </p>
+            <p class="interbold16"> {{ props.camSlotName }} </p>
             <div class="camSettingsOptionsWrapper">
                 <div class="iconWrapper">
                     <img class="icon" src="/src/assets/icons/microphoneOn.svg">                     
@@ -45,7 +60,15 @@ const view = ref()
             </div>
         </div>
         <div class="camSettingsCam">
-            <Dropdown v-model="view" :options="viewOptionsRef" optionLabel="name" placeholder="Select View" class="camSettingsDropdown" />   
+            <Button label="get" @click="before()" />
+            <Dropdown 
+                v-model="selectedView" 
+                :options="viewOptionsRef" 
+                optionLabel="name" 
+                placeholder="Select View" 
+                class="camSettingsDropdown" 
+                @change="setSelectedView" 
+            />   
         </div>
     </div>
 </template>
