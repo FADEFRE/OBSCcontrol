@@ -20,12 +20,12 @@ onBeforeMount(() => {
 })
 
 async function before() {
-    await requestScenes()
     await connectToObs()
+    await requestScenes()
     sceneList = await getAllSceneNames()
     sceneRef.value = sceneList
     console.log(sceneList)
-    viewOptions = await getSceneItems("scene 2")
+    viewOptions = await getSceneItems("4 Cam Grid")
     viewOptionsRef.value = viewOptions
     console.log(viewOptions)
 }
@@ -39,7 +39,7 @@ async function setSelectedView() {
   console.log("test")
   const raw = toRaw(selectedView.value)
   console.log(raw)
-  await setSceneItemActive("scene 2", raw.name)
+  await setSceneItemActive("4 Cam Grid", raw.name)
 }
 
 </script>

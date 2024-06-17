@@ -1,4 +1,5 @@
 <script setup>
+import { connectToObs } from '@/obs-websocket/index';
 import { ref, onBeforeMount } from "vue";
 import { 
     requestScenes,
@@ -14,8 +15,9 @@ let viewOptions = []
 const viewOptionsRef = ref([])
 
 async function before() {
+    await connectToObs()
     await requestScenes()
-    viewOptions = await getSceneItems("scene 2")
+    viewOptions = await getSceneItems("Slot_1")
     viewOptionsRef.value = viewOptions
     console.log(viewOptions)
 }
