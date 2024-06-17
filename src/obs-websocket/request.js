@@ -3,7 +3,6 @@ import { obsConnection, errorHandler } from '@/obs-websocket/index';
 
 async function requestScenes() {
     try {
-        await connectToObs()
         const response = await obsConnection.call('GetSceneList');
         console.log(response);
         const store = useOBSStore();
@@ -73,7 +72,6 @@ async function getCurrentSceneIndex() {
 
 async function getAllSceneNames() {
     try {
-        await connectToObs();
         await requestScenes();
         const store = useOBSStore();
         const length = store.getNumberOfScenes;
@@ -93,7 +91,6 @@ async function getAllSceneNames() {
 
 async function getNumberOfScenes() {
     try {
-        await connectToObs();
         await requestScenes();
         const store = useOBSStore();
         const length = store.getNumberOfScenes;
@@ -105,10 +102,7 @@ async function getNumberOfScenes() {
 
 async function getSceneItems(scene) {
     try {
-        await connectToObs();
         await requestScenes();
-        const store = useOBSStore();
-        const length = store.getNumberOfScenes;
 
         let formattedItems = []
 
@@ -121,6 +115,18 @@ async function getSceneItems(scene) {
         }
         console.log(formattedItems)
         return formattedItems;
+    } catch(error) {
+        errorHandler(error);
+    }
+}
+
+async function getSceneItemsListLength(scene) {
+    try {
+        await requestScenes();
+        const store = useOBSStore();
+        const response = await obsConnection.call('GetSceneItemList', {sceneName: scene});
+        const sceneItems = response.sceneItems;
+        return sceneItems.length;
     } catch(error) {
         errorHandler(error);
     }
@@ -144,4 +150,5 @@ export {
     setCurrentScene,
     getNumberOfScenes,
     getSceneItems,
+    getSceneItemsListLength,
 };

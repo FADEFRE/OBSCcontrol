@@ -35,14 +35,5 @@ export {
     obsConnection,
     errorHandler,
     connectToObs,
-    disconnectFromObs,
-    requestScenes,
-    getIndexOfScene,
-    getNameOfScene,
-    getCurrentSceneName,
-    getCurrentSceneIndex,
-    getAllSceneNames,
-    setCurrentScene,
-    getNumberOfScenes,
-    getSceneItems,
+    disconnectFromObs
 };
