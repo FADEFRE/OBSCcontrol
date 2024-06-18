@@ -1,7 +1,7 @@
 <script setup>
 import { disconnectFromObs } from '@/obs-websocket/index';
 import { ref, onMounted, onBeforeUnmount, toRaw } from "vue";
-import { requestScenes, getSceneItems } from '@/obs-websocket/request';
+import { requestScenes, getSceneItems, unMuteAllOfPerson, muteAll } from '@/obs-websocket/request';
 import { setSceneItemActive } from '@/obs-websocket/buttonLogic';
 import { useOBSStore } from '@/store';
 import { camId } from '@/util/naming.js'
@@ -27,7 +27,6 @@ const selectedView = ref()
 onMounted(() => {
     setTimeout(() => {
         mount()
-        console.log(props.camSlotId)
         const d = document.getElementById(props.camSlotId)
         const store = useOBSStore()
         d.classList.add("is-inactive");
@@ -48,15 +47,18 @@ async function mount() {
 function update() {
     disableAllMic()
     const d = document.getElementById(props.camSlotId)
-
     if (store.getCurrentSound === props.camSlotId) {
         store.setCurrentSound("")
         d.classList.replace("is-active", "is-inactive");
+        muteAll()
     }
     else {
         store.setCurrentSound(props.camSlotId);
         d.classList.replace("is-inactive", "is-active");
+        unMuteAllOfPerson(props.camSlotId)
     }
+
+
 
 }
 
@@ -82,7 +84,6 @@ async function disableAllMic() {
         } catch (error) {
             
         }
-        
     }
 }
 

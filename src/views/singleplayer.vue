@@ -8,7 +8,7 @@ import { connectToObs, disconnectFromObs } from '@/obs-websocket/index';
 import { camId, camName } from '@/util/naming.js'
 import { useOBSStore } from '@/store';
 
-import { setCurrentScene } from '@/obs-websocket/request.js'
+import { setCurrentScene, muteAll } from '@/obs-websocket/request.js'
 
 onBeforeMount(() => {
     before()
@@ -17,6 +17,7 @@ onBeforeMount(() => {
 async function before() {
     await connectToObs()
     await setCurrentScene("Solo_Cam_Grid")
+    await muteAll()
     const store = useOBSStore();
     store.setCurrentSound("")
 }
@@ -31,12 +32,14 @@ async function unmount() {
 </script>
 
 <template>
-    <topNav />
-    <div class="sidenav">
-        <MenuBlock />
-        <div class=settingsarea>
-            <div class="camsWrapper">
-                <camSettings :camSlotId="camId[0]" :camSlotName="camName[0]" />
+    <div>
+        <topNav />
+        <div class="sidenav">
+            <MenuBlock />
+            <div class=settingsarea>
+                <div class="camsWrapper">
+                    <camSettings :camSlotId="camId[0]" :camSlotName="camName[0]" />
+                </div>
             </div>
         </div>
     </div>

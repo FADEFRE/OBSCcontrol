@@ -47,6 +47,7 @@ async function getCurrentSceneName() {
         const store = useOBSStore();
         if (store.getNumberOfScenes > 0) {
             const name = store.getCurrentScene;
+            return name;
         }
     } catch(error) {
         errorHandler(error);
@@ -58,7 +59,8 @@ async function getCurrentSceneIndex() {
         await requestScenes();
         const store = useOBSStore();
         if (store.getNumberOfScenes > 0) {
-            const name = store.getIndexOfScene(store.getCurrentScene);
+            const index = store.getIndexOfScene(store.getCurrentScene);
+            return index;
         }
     } catch(error) {
         errorHandler(error);
@@ -116,7 +118,6 @@ async function getSceneItems(scene) {
 async function getSceneItemsListLength(scene) {
     try {
         await requestScenes();
-        const store = useOBSStore();
         const response = await obsConnection.call('GetSceneItemList', {sceneName: scene});
         const sceneItems = response.sceneItems;
         return sceneItems.length;
@@ -133,6 +134,58 @@ async function setCurrentScene(name) {
     }
 }
 
+async function muteAll() {
+    try {
+        const people = await getSceneItems("Slot_1")
+        for (let index = 0; index < people.length; index++) {
+            const personScene = people[index];
+            const partsOfPerson = await getSceneItems(personScene.name)
+            for (let index = 0; index < partsOfPerson.length; index++) {
+                const element = partsOfPerson[index];
+                try {
+                    await obsConnection.call('SetInputMute', {inputName: element.name, inputMuted: true});
+                } catch (error) {
+
+                }
+            }
+        }
+    } catch(error) {
+        errorHandler(error);
+    }
+}
+
+async function getNameOfActiveInScene(slot) {
+    try {
+        const people = await getSceneItems(slot)
+        for (let index = 0; index < people.length; index++) {
+            const element = people[index];
+            if (element.isActive) {
+                return element.name
+            }
+        }
+    } catch(error) {
+        errorHandler(error);
+    }
+}
+
+async function unMuteAllOfPerson(slot) {
+    try {
+        await muteAll()
+        const personSceneName = await getNameOfActiveInScene(slot)
+        const partsOfPerson = await getSceneItems(personSceneName)
+        for (let index = 0; index < partsOfPerson.length; index++) {
+            const element = partsOfPerson[index];
+            try {
+                await obsConnection.call('SetInputMute', {inputName: element.name, inputMuted: false});
+            } catch (error) {
+
+            }
+        }
+    } catch(error) {
+        errorHandler(error);
+    }
+}
+
 export {
     requestScenes,
     getIndexOfScene,
@@ -144,4 +197,7 @@ export {
     getNumberOfScenes,
     getSceneItems,
     getSceneItemsListLength,
+    muteAll,
+    getNameOfActiveInScene,
+    unMuteAllOfPerson,
 };

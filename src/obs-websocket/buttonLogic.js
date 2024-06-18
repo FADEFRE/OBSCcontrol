@@ -3,7 +3,10 @@ import {
     getSceneItems,
     getSceneItemsListLength,
     requestScenes,
+    muteAll,
+    unMuteAllOfPerson,
         } from '@/obs-websocket/request';
+import { useOBSStore } from '@/store';
 
 async function setSceneItemActive(scene, itemName) {
     try {
@@ -19,6 +22,11 @@ async function setSceneItemActive(scene, itemName) {
         }
 
         await obsConnection.call('SetSceneItemEnabled', {sceneName: scene, sceneItemId: itemId, sceneItemEnabled: true});
+
+        const store = useOBSStore()
+        if (store.getCurrentSound === scene) {
+            unMuteAllOfPerson(scene)
+        }
 
     } catch(error) {
         errorHandler(error);

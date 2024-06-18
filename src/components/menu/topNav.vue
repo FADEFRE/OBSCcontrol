@@ -26,14 +26,14 @@ onUnmounted(() => {
     <div class="topNavWrapper">
         <p class="topNavText">Control Center</p>
             <div class="topMenuOptionsWrap">
-                <Button id="status" class="iconWrapper">
+                <div id="status" class="iconWrapper">
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6.6665 16.7333C9.30192 14.5382 12.6233 13.3362 16.0532 13.3362C19.483 13.3362 22.8044 14.5382 25.4398 16.7333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M1.89355 12C5.79012 8.56529 10.8059 6.6702 16.0002 6.6702C21.1945 6.6702 26.2103 8.56529 30.1069 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M11.3735 21.48C12.7271 20.5183 14.3464 20.0017 16.0069 20.0017C17.6673 20.0017 19.2866 20.5183 20.6402 21.48" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M16 26.6667H16.0133" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>                                     
-                </Button>
+                </div>
                 <div class="iconWrapper">
                     <svg class="iconLarge" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16 21C13.24 21 11 18.76 11 16C11 13.24 13.24 11 16 11C18.76 11 21 13.24 21 16C21 18.76 18.76 21 16 21ZM16 13C14.3467 13 13 14.3467 13 16C13 17.6533 14.3467 19 16 19C17.6533 19 19 17.6533 19 16C19 14.3467 17.6533 13 16 13Z" fill="currentColor"/>
