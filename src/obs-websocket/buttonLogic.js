@@ -3,7 +3,6 @@ import {
     getSceneItems,
     getSceneItemsListLength,
     requestScenes,
-    muteAll,
     unMuteAllOfPerson,
         } from '@/obs-websocket/request';
 import { useOBSStore } from '@/store';
