@@ -1,5 +1,5 @@
 <script setup>
-import topNav from '../components/menu/topNav.vue';
+import topNav from '@/components/menu/topNav.vue';
 import MenuBlock from '@/components/menu/MenuBlock.vue';
 import AutoSwitcherOption from '@/components/settingsPages/AutoSwitcherOption.vue'
 </script>
@@ -40,5 +40,12 @@ import AutoSwitcherOption from '@/components/settingsPages/AutoSwitcherOption.vu
     flex: 1 0 0;
     align-self: stretch;
     height: 100%;
+}
+
+// Mobile
+@media only screen and (max-width: 600px) {
+    .sidenav{
+        flex-direction: column;
+    }
 }
 </style>

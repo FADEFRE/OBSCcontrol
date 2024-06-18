@@ -1,4 +1,3 @@
-import { useOBSStore } from '@/store';
 import { obsConnection, errorHandler } from '@/obs-websocket/index';
 import { 
     getSceneItems,

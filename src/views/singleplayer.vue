@@ -1,7 +1,33 @@
 <script setup>
-import topNav from '../components/menu/topNav.vue';
+import topNav from '@/components/menu/topNav.vue';
 import MenuBlock from '@/components/menu/MenuBlock.vue';
-import camSettings from '../components/settingsPages/camSettings.vue'
+import camSettings from '@/components/settingsPages/camSettings.vue'
+
+import { onBeforeMount, onUnmounted } from "vue";
+import { connectToObs, disconnectFromObs } from '@/obs-websocket/index';
+import { camId, camName } from '@/util/naming.js'
+import { useOBSStore } from '@/store';
+
+import { setCurrentScene } from '@/obs-websocket/request.js'
+
+onBeforeMount(() => {
+    before()
+})
+
+async function before() {
+    await connectToObs()
+    await setCurrentScene("Solo_Cam_Grid")
+    const store = useOBSStore();
+    store.setCurrentSound("")
+}
+
+onUnmounted(() => {
+    unmount()
+})
+
+async function unmount() {
+    await disconnectFromObs();
+}
 </script>
 
 <template>
@@ -10,7 +36,7 @@ import camSettings from '../components/settingsPages/camSettings.vue'
         <MenuBlock />
         <div class=settingsarea>
             <div class="camsWrapper">
-                <camSettings></camSettings>
+                <camSettings :camSlotId="camId[0]" :camSlotName="camName[0]" />
             </div>
         </div>
     </div>
@@ -44,5 +70,12 @@ import camSettings from '../components/settingsPages/camSettings.vue'
     flex: 1 0 0;
     align-self: stretch;
     height: 100%;
+}
+
+// Mobile
+@media only screen and (max-width: 600px) {
+    .sidenav{
+        flex-direction: column;
+    }
 }
 </style>

@@ -4,6 +4,8 @@ import { connectToObs } from '@/obs-websocket/index';
 import { onBeforeMount } from "vue";
 import { requestScenes } from '@/obs-websocket/request';
 
+import { camId, camName } from '@/util/naming.js'
+
 onBeforeMount(() => {
     before()
 })
@@ -11,23 +13,15 @@ onBeforeMount(() => {
 
 async function before() {
     await connectToObs()
-    await requestScenes()
 }
 
-const slot1 = "Slot_1"
-const slot2 = "Slot_2"
-const slot3 = "Slot_3"
-const slot4 = "Slot_4"
 </script>
 
 <template>
-    <div>
-        <Button label="reconnect" @click="before()" />
-    </div>
-        <camSettings :camSlotName="slot1"/>
-        <camSettings :camSlotName="slot2"/>
-        <camSettings :camSlotName="slot3"/>
-        <camSettings :camSlotName="slot4"/>
+    <camSettings :camSlotId="camId[1]" :camSlotName="camName[1]" />
+    <camSettings :camSlotId="camId[2]" :camSlotName="camName[2]" />
+    <camSettings :camSlotId="camId[3]" :camSlotName="camName[3]" />
+    <camSettings :camSlotId="camId[4]" :camSlotName="camName[4]" />
 </template>
 
 <style lang="scss">

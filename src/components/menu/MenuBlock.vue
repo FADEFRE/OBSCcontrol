@@ -9,9 +9,9 @@ const name3 = "autoswitcher"
 
 <template>
     <div class="menuWrapper">
+        <menuItem :routeName="name2"/>
         <menuItem :routeName="name"/>
         <menuItem :routeName="name1"/>
-        <menuItem :routeName="name2"/>
         <menuItem :routeName="name3"/>
     </div>
 </template>

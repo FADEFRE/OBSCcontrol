@@ -14,9 +14,17 @@
     padding: 4rem;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
+    gap: 2rem;
     background: $color-background;
     align-self: stretch;
-    height: 100dvh;
+    min-height: 100dvh;
+}
+
+// Mobile
+@media only screen and (max-width: 600px) {
+    .page{
+        padding: 1rem;
+        gap: 2.5rem;
+    }
 }
 </style>

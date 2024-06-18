@@ -1,7 +1,7 @@
 <template>
     <div class="autoSwitcherOptionWrapper">
         <div class="autoSwitcherOptionButton">
-            <p class="interbold16">Spieler 1</p>
+            <p class="interbold16"></p>
         </div>
         <div class="iconWrapper">
             <img class="icon" src="/src/assets/icons/eyeOn.svg">  

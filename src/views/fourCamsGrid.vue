@@ -1,7 +1,33 @@
 <script setup>
-import topNav from '../components/menu/topNav.vue';
+import topNav from '@/components/menu/topNav.vue';
 import MenuBlock from '@/components/menu/MenuBlock.vue';
-import camSettings from '../components/settingsPages/camSettings.vue'
+import camSettings from '@/components/settingsPages/camSettings.vue'
+
+import { onBeforeMount, onUnmounted } from "vue";
+import { connectToObs, disconnectFromObs } from '@/obs-websocket/index';
+import { setCurrentScene } from '@/obs-websocket/request.js'
+import { camId, camName } from '@/util/naming.js'
+import { useOBSStore } from '@/store';
+
+
+onBeforeMount(() => {
+    before()
+})
+
+async function before() {
+    await connectToObs()
+    await setCurrentScene("4_Cam_Grid")
+    const store = useOBSStore();
+    store.setCurrentSound("")
+}
+
+onUnmounted(() => {
+    unmount()
+})
+
+async function unmount() {
+    await disconnectFromObs();
+}
 </script>
 
 <template>
@@ -10,12 +36,12 @@ import camSettings from '../components/settingsPages/camSettings.vue'
         <MenuBlock />
         <div class=settingsarea>
             <div class="camsWrapper">
-                <camSettings></camSettings>
-                <camSettings></camSettings>
+                <camSettings :camSlotId="camId[1]" :camSlotName="camName[1]" />
+                <camSettings :camSlotId="camId[2]" :camSlotName="camName[2]" />
             </div>
             <div class="camsWrapper">
-                <camSettings></camSettings>
-                <camSettings></camSettings>
+                <camSettings :camSlotId="camId[3]" :camSlotName="camName[3]" />
+                <camSettings :camSlotId="camId[4]" :camSlotName="camName[4]" />
             </div>
         </div>
     </div>
@@ -49,5 +75,24 @@ import camSettings from '../components/settingsPages/camSettings.vue'
     flex: 1 0 0;
     align-self: stretch;
     height: 100%;
+}
+
+@media only screen and (max-width: 1250px) {
+    .camsWrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+
+// Mobile
+@media only screen and (max-width: 600px) {
+    .sidenav{
+        flex-direction: column;
+    }
+    .camsWrapper{
+        width: 100%;
+    }
 }
 </style>

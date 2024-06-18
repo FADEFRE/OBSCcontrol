@@ -4,7 +4,6 @@ import { obsConnection, errorHandler } from '@/obs-websocket/index';
 async function requestScenes() {
     try {
         const response = await obsConnection.call('GetSceneList');
-        console.log(response);
         const store = useOBSStore();
         if (response.currentProgramSceneName != null) {
             store.setCurrentScene(response.currentProgramSceneName);
@@ -25,7 +24,6 @@ async function getIndexOfScene(sceneName) {
         const store = useOBSStore();
         if (store.getNumberOfScenes > 0) {
             const index = store.getIndexOfScene(sceneName);
-            console.log(index);
         }
     } catch(error) {
         errorHandler(error);
@@ -37,7 +35,6 @@ async function getNameOfScene(sceneIndex) {
         const response = await obsConnection.call('GetSceneList');
         const scene = response.scenes[sceneIndex];
         const name = scene.sceneName;
-        console.log(name)
         return name;
     } catch(error) {
         errorHandler(error);
@@ -50,7 +47,6 @@ async function getCurrentSceneName() {
         const store = useOBSStore();
         if (store.getNumberOfScenes > 0) {
             const name = store.getCurrentScene;
-            console.log(name);
         }
     } catch(error) {
         errorHandler(error);
@@ -63,7 +59,6 @@ async function getCurrentSceneIndex() {
         const store = useOBSStore();
         if (store.getNumberOfScenes > 0) {
             const name = store.getIndexOfScene(store.getCurrentScene);
-            console.log(name);
         }
     } catch(error) {
         errorHandler(error);
@@ -81,7 +76,6 @@ async function getAllSceneNames() {
                 const name = await getNameOfScene(index);
                 arr.push(name);
             }
-            console.log("scenes: " + arr)
             return arr;
         }
     } catch(error) {
@@ -113,7 +107,6 @@ async function getSceneItems(scene) {
             const formattedSingleItem = { name: item.sourceName, sceneItemId: item.sceneItemId, isGroup: item.isGroup, isActive: item.sceneItemEnabled }
             formattedItems.push(formattedSingleItem)
         }
-        console.log(formattedItems)
         return formattedItems;
     } catch(error) {
         errorHandler(error);
