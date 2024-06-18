@@ -16,6 +16,6 @@ const camName = [
 
 
 export {
-     camId,
-     camName,
+    camId,
+    camName,
 }

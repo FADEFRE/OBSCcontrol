@@ -2,6 +2,31 @@
 import topNav from '@/components/menu/topNav.vue';
 import MenuBlock from '@/components/menu/MenuBlock.vue';
 import AutoSwitcherOption from '@/components/settingsPages/AutoSwitcherOption.vue'
+
+import { onBeforeMount, onUnmounted } from "vue";
+import { connectToObs, disconnectFromObs } from '@/obs-websocket/index';
+import { setCurrentScene } from '@/obs-websocket/request.js'
+import { useOBSStore } from '@/store';
+
+onBeforeMount(() => {
+    before()
+})
+
+async function before() {
+    await connectToObs()
+    await setCurrentScene("4_Cam_Grid")
+    const store = useOBSStore();
+    store.setCurrentSound("")
+}
+
+onUnmounted(() => {
+    unmount()
+})
+
+async function unmount() {
+    await disconnectFromObs();
+}
+
 </script>
 
 <template>
@@ -9,8 +34,8 @@ import AutoSwitcherOption from '@/components/settingsPages/AutoSwitcherOption.vu
     <div class="sidenav">
         <MenuBlock />
         <div class=settingsarea>
-            <AutoSwitcherOption />
-            <AutoSwitcherOption />
+            <AutoSwitcherOption :camSlotName="'Lennart'"/>
+            <AutoSwitcherOption :camSlotName="'Basti'"/>
             <AutoSwitcherOption />
             <AutoSwitcherOption />
             <AutoSwitcherOption />

@@ -1,7 +1,20 @@
+<script setup>
+const props = defineProps({
+    camSlotName: {
+        type: String,
+        required: true,
+    },
+})
+
+
+
+
+</script>
+
 <template>
     <div class="autoSwitcherOptionWrapper">
         <div class="autoSwitcherOptionButton">
-            <p class="interbold16"></p>
+            <p class="interbold16"> {{ props.camSlotName }}</p>
         </div>
         <div class="iconWrapper">
             <img class="icon" src="/src/assets/icons/eyeOn.svg">  

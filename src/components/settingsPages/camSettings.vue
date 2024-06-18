@@ -1,14 +1,10 @@
 <script setup>
-import { connectToObs, disconnectFromObs } from '@/obs-websocket/index';
-import { ref, onMounted, onBeforeUnmount, onBeforeUpdate, toRaw, computed } from "vue";
-import { 
-    requestScenes,
-    getAllSceneNames,
-    getSceneItems,
-    } from '@/obs-websocket/request';
+import { disconnectFromObs } from '@/obs-websocket/index';
+import { ref, onMounted, onBeforeUnmount, toRaw } from "vue";
+import { requestScenes, getSceneItems } from '@/obs-websocket/request';
 import { setSceneItemActive } from '@/obs-websocket/buttonLogic';
 import { useOBSStore } from '@/store';
-import { camId, camName } from '@/util/naming.js'
+import { camId } from '@/util/naming.js'
 
 
 const props = defineProps({

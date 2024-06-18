@@ -2,7 +2,6 @@
 import camSettings from '@/components/settingsPages/camSettings.vue';
 import { connectToObs } from '@/obs-websocket/index';
 import { onBeforeMount } from "vue";
-import { requestScenes } from '@/obs-websocket/request';
 
 import { camId, camName } from '@/util/naming.js'
 
