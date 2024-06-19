@@ -18,6 +18,15 @@
     background: $color-background;
     align-self: stretch;
     min-height: 100dvh;
+    width: 100%;;
+}
+
+.main-content{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    height: 100%;
 }
 
 // Mobile

@@ -74,7 +74,6 @@ async function test() {
     display: flex;
     align-items: flex-start;
     gap: 2rem;
-    flex: 1 0 0;
     align-self: stretch;
 }
 
@@ -89,22 +88,18 @@ async function test() {
     height: 100%;
 }
 
-@media only screen and (max-width: 1250px) {
-    .camsWrapper{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-    }
-}
-
 // Mobile
 @media only screen and (max-width: 600px) {
     .sidenav{
         flex-direction: column;
+        width: 100%;
+    }
+    .settingsarea{
+        min-width: 100%;
     }
     .camsWrapper{
         width: 100%;
+        flex-direction: column;
     }
 }
 </style>

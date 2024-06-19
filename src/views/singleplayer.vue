@@ -80,5 +80,8 @@ async function unmount() {
     .sidenav{
         flex-direction: column;
     }
+    .settingsarea{
+        min-width: 100%;
+    }
 }
 </style>

@@ -63,8 +63,8 @@ async function unmount() {
     display: flex;
     align-items: flex-start;
     gap: 2rem;
-    flex: 1 0 0;
     align-self: stretch;
+    height: 100%;
 }
 
 .settingsarea{
@@ -76,26 +76,17 @@ async function unmount() {
     flex: 1 0 0;
     align-self: stretch;
     height: 100%;
-}
-
-
-@media only screen and (max-width: 1250px) {
-    .camsWrapper{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-    }
-
-    .sidenav{
-        flex-direction: column;
-    }
+    width: 100%;
 }
 
 // Mobile
 @media only screen and (max-width: 600px) {
     .sidenav{
         flex-direction: column;
+        width: 100%;
+    }
+    .settingsarea{
+        min-width: 100%;
     }
     .camsWrapper{
         width: 100%;

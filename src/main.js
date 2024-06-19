@@ -22,6 +22,8 @@ import Button from 'primevue/button'
 import InputText from 'primevue/inputtext'
 import SelectButton from 'primevue/selectbutton'
 import Dialog from 'primevue/dialog'
+import InputNumber from 'primevue/inputnumber';
+
 
 import 'primevue/resources/themes/nova/theme.css'
 import 'primeicons/primeicons.css'
@@ -34,5 +36,6 @@ app.use(PrimeVue)
     .component('InputText', InputText)
     .component('SelectButton', SelectButton)
     .component('Dialog', Dialog)
+    .component('InputNumber', InputNumber)
 
 app.mount('#app')
