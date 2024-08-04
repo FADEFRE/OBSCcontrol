@@ -6,7 +6,8 @@ let counter = 0;
 
 async function connectToObs() {
     try {
-        await obsConnection.connect('ws://127.0.0.1:4455');
+        await obsConnection.connect('ws://192.168.178.38:4455');
+        //await obsConnection.connect('ws://127.0.0.1:4455');
         console.log('Connected to server')
         const store = useOBSStore()
         store.setStatus(true)

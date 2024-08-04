@@ -14,7 +14,7 @@ onBeforeMount(() => {
 
 async function before() {
     await connectToObs()
-    await setCurrentScene("4_Cam_Grid")
+    await setCurrentScene("Solo_Cam_Grid")
     const store = useOBSStore();
     store.setCurrentSound("")
 }
