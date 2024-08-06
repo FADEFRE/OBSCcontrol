@@ -30,4 +30,11 @@ const name3 = "autoswitcher"
     height: 100%;
 }
 
+// Mobile
+@media only screen and (max-width: 600px) {
+    .menuWrapper{
+        display: none;
+    
+    }
+}
 </style>

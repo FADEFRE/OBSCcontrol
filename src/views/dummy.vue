@@ -14,6 +14,7 @@ async function before() {
     await connectToObs()
 }
 
+import mobileMenu from '@/components/menu/mobileMenu.vue'
 </script>
 
 <template>
@@ -21,6 +22,7 @@ async function before() {
     <camSettings :camSlotId="camId[2]" :camSlotName="camName[2]" />
     <camSettings :camSlotId="camId[3]" :camSlotName="camName[3]" />
     <camSettings :camSlotId="camId[4]" :camSlotName="camName[4]" />
+    <mobileMenu />
 </template>
 
 <style lang="scss">

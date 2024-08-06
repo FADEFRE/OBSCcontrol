@@ -9,6 +9,8 @@ import { setCurrentScene, getNameOfActiveInScene, muteAll } from '@/obs-websocke
 import { camId, camName } from '@/util/naming.js'
 import { useOBSStore } from '@/store';
 
+import mobileMenu from '@/components/menu/mobileMenu.vue'
+
 
 onBeforeMount(() => {
     before()
@@ -40,12 +42,12 @@ async function test() {
 </script>
 
 <template>
-    <div>
+    <mobileMenu />
+    <div class="page_content_holder">
         <topNav />
         <div class="sidenav">
             <MenuBlock />
             <div class=settingsarea>
-                <Button label="test" @click="test" />
                 <div class="camsWrapper">
                     <camSettings :camSlotId="camId[1]" :camSlotName="camName[1]" />
                     <camSettings :camSlotId="camId[2]" :camSlotName="camName[2]" />
@@ -77,17 +79,6 @@ async function test() {
     align-self: stretch;
 }
 
-.settingsarea{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    flex: 1 0 0;
-    align-self: stretch;
-    height: 100%;
-}
-
 // Mobile
 @media only screen and (max-width: 600px) {
     .sidenav{
@@ -101,5 +92,6 @@ async function test() {
         width: 100%;
         flex-direction: column;
     }
+    
 }
 </style>

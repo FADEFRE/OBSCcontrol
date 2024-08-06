@@ -9,6 +9,7 @@ import { camId, camName } from '@/util/naming.js'
 import { useOBSStore } from '@/store';
 
 import { setCurrentScene, muteAll } from '@/obs-websocket/request.js'
+import mobileMenu from '@/components/menu/mobileMenu.vue'
 
 onBeforeMount(() => {
     before()
@@ -33,7 +34,8 @@ async function unmount() {
 </script>
 
 <template>
-    <div>
+    <mobileMenu />
+    <div class="page_content_holder">
         <topNav />
         <div class="sidenav">
             <MenuBlock />
@@ -65,18 +67,6 @@ async function unmount() {
     gap: 2rem;
     align-self: stretch;
     height: 100%;
-}
-
-.settingsarea{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    flex: 1 0 0;
-    align-self: stretch;
-    height: 100%;
-    width: 100%;
 }
 
 // Mobile

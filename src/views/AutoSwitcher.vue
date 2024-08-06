@@ -8,6 +8,8 @@ import { connectToObs, disconnectFromObs } from '@/obs-websocket/index';
 import { setCurrentScene } from '@/obs-websocket/request.js'
 import { useOBSStore } from '@/store';
 
+import mobileMenu from '@/components/menu/mobileMenu.vue'
+
 onBeforeMount(() => {
     before()
 })
@@ -30,19 +32,22 @@ async function unmount() {
 </script>
 
 <template>
-    <topNav />
-    <div class="sidenav">
-        <MenuBlock />
-        <div class=settingsarea>
-            <div class="switcherContentWrap">
-                <InputNumber class="autoSwitcherInput" v-model="value3" inputId="horizontal-buttons" suffix=" sek." :min="30" showButtons buttonLayout="horizontal" :step="30" mode="decimal" />
-                <AutoSwitcherOption :camSlotName="'Lennart'"/>
-                <AutoSwitcherOption :camSlotName="'Basti'"/>
-                <AutoSwitcherOption :camSlotName="'Freddy'"/>
-                <AutoSwitcherOption :camSlotName="'Steven'"/>
-                <AutoSwitcherOption :camSlotName="'Lucy'"/>
-                <AutoSwitcherOption :camSlotName="'Darsey'"/>
-                <AutoSwitcherOption :camSlotName="'Marco'"/>
+    <mobileMenu />
+    <div class="page_content_holder">
+        <topNav />
+        <div class="sidenav">
+            <MenuBlock />
+            <div class=settingsarea>
+                <div class="switcherContentWrap">
+                    <InputNumber class="autoSwitcherInput" v-model="value3" inputId="horizontal-buttons" suffix=" sek." :min="30" showButtons buttonLayout="horizontal" :step="30" mode="decimal" />
+                    <AutoSwitcherOption :camSlotName="'Lennart'"/>
+                    <AutoSwitcherOption :camSlotName="'Basti'"/>
+                    <AutoSwitcherOption :camSlotName="'Freddy'"/>
+                    <AutoSwitcherOption :camSlotName="'Steven'"/>
+                    <AutoSwitcherOption :camSlotName="'Lucy'"/>
+                    <AutoSwitcherOption :camSlotName="'Darsey'"/>
+                    <AutoSwitcherOption :camSlotName="'Marco'"/>
+                </div>
             </div>
         </div>
     </div>

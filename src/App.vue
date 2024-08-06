@@ -32,8 +32,12 @@
 // Mobile
 @media only screen and (max-width: 600px) {
     .page{
-        padding: 1rem;
+        padding: 0rem;
         gap: 2.5rem;
+    }
+
+    .main-content{
+        padding: 1rem;
     }
 }
 </style>
