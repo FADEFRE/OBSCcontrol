@@ -34,11 +34,6 @@ async function unmount() {
     await disconnectFromObs();
 }
 
-async function test() {
-    muteAll()
-    getNameOfActiveInScene("Slot_1");
-}
-
 </script>
 
 <template>
