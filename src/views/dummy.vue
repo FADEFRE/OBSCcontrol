@@ -1,5 +1,5 @@
 <script setup>
-import camSettings from '@/components/settingsPages/camSettings.vue';
+import CamSettings from '@/components/settingsPages/CamSettings.vue';
 import { connectToObs } from '@/obs-websocket/index';
 import { onBeforeMount } from "vue";
 
@@ -14,15 +14,15 @@ async function before() {
     await connectToObs()
 }
 
-import mobileMenu from '@/components/menu/mobileMenu.vue'
+import MobileMenu from '@/components/menu/MobileMenu.vue'
 </script>
 
 <template>
-    <camSettings :camSlotId="camId[1]" :camSlotName="camName[1]" />
-    <camSettings :camSlotId="camId[2]" :camSlotName="camName[2]" />
-    <camSettings :camSlotId="camId[3]" :camSlotName="camName[3]" />
-    <camSettings :camSlotId="camId[4]" :camSlotName="camName[4]" />
-    <mobileMenu />
+    <CamSettings :camSlotId="camId[1]" :camSlotName="camName[1]" />
+    <CamSettings :camSlotId="camId[2]" :camSlotName="camName[2]" />
+    <CamSettings :camSlotId="camId[3]" :camSlotName="camName[3]" />
+    <CamSettings :camSlotId="camId[4]" :camSlotName="camName[4]" />
+    <MobileMenu />
 </template>
 
 <style lang="scss">
