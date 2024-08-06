@@ -22,8 +22,11 @@ async function before() {
     if (store.wasButtonClicked) {
         await setCurrentScene("2_Cam_Grid")
         await muteAll()
-        const store = useOBSStore();
         store.setCurrentSound("")
+        store.removeClicked
+    }
+    else {
+        
     }
 }
 
