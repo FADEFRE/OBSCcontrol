@@ -1,7 +1,8 @@
 <script setup>
-import topNav from '@/components/menu/topNav.vue';
+import TopNav from '@/components/menu/TopNav.vue';
 import MenuBlock from '@/components/menu/MenuBlock.vue';
-import camSettings from '@/components/settingsPages/camSettings.vue'
+import MobileMenu from '@/components/menu/MobileMenu.vue'
+import CamSettings from '@/components/settingsPages/CamSettings.vue'
 
 import { onBeforeMount, onUnmounted } from "vue";
 import { connectToObs, disconnectFromObs } from '@/obs-websocket/index';
@@ -10,7 +11,6 @@ import { useOBSStore } from '@/store';
 
 import { setCurrentScene, muteAll } from '@/obs-websocket/request.js'
 
-import mobileMenu from '@/components/menu/mobileMenu.vue'
 
 onBeforeMount(() => {
     before()
@@ -34,14 +34,14 @@ async function unmount() {
 </script>
 
 <template>
-    <mobileMenu />
+    <MobileMenu />
     <div class="page_content_holder">
-        <topNav />
+        <TopNav />
         <div class="sidenav">
             <MenuBlock />
             <div class=settingsarea>
                 <div class="camsWrapper">
-                    <camSettings :camSlotId="camId[0]" :camSlotName="camName[0]" />
+                    <CamSettings :camSlotId="camId[0]" :camSlotName="camName[0]" />
                 </div>
             </div>
         </div>

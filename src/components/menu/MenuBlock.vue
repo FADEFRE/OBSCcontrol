@@ -1,18 +1,18 @@
 <script setup>
-import menuItem from './menuItem.vue';
-const name = "twocamsgrid"
-const name1 = "fourcamsgrid"
-const name2 = "singleplayer"
+import MenuItem from './MenuItem.vue';
+const name0 = "singleplayer"
+const name1 = "twocamsgrid"
+const name2 = "fourcamsgrid"
 const name3 = "autoswitcher"
 </script>
 
 
 <template>
     <div class="menuWrapper">
-        <menuItem :routeName="name2"/>
-        <menuItem :routeName="name"/>
-        <menuItem :routeName="name1"/>
-        <menuItem :routeName="name3"/>
+        <MenuItem :routeName="name0"/>
+        <MenuItem :routeName="name1"/>
+        <MenuItem :routeName="name2"/>
+        <MenuItem :routeName="name3"/>
     </div>
 </template>
 

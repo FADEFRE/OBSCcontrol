@@ -1,6 +1,7 @@
 <script setup>
-import topNav from '@/components/menu/topNav.vue';
+import TopNav from '@/components/menu/TopNav.vue';
 import MenuBlock from '@/components/menu/MenuBlock.vue';
+import MobileMenu from '@/components/menu/MobileMenu.vue'
 import AutoSwitcherOption from '@/components/settingsPages/AutoSwitcherOption.vue'
 
 import { onBeforeMount, onUnmounted } from "vue";
@@ -8,7 +9,6 @@ import { connectToObs, disconnectFromObs } from '@/obs-websocket/index';
 import { setCurrentScene } from '@/obs-websocket/request.js'
 import { useOBSStore } from '@/store';
 
-import mobileMenu from '@/components/menu/mobileMenu.vue'
 
 onBeforeMount(() => {
     before()
@@ -32,9 +32,9 @@ async function unmount() {
 </script>
 
 <template>
-    <mobileMenu />
+    <MobileMenu />
     <div class="page_content_holder">
-        <topNav />
+        <TopNav />
         <div class="sidenav">
             <MenuBlock />
             <div class=settingsarea>

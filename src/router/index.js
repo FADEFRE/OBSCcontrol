@@ -17,17 +17,17 @@ const router = createRouter({
     {
       path: '/singleplayer',
       name: 'singleplayer',
-      component: () => import('../views/singleplayer.vue')
+      component: () => import('../views/Singleplayer.vue')
     },
     {
       path: '/twocamsgrid',
       name: 'twocamsgrid',
-      component: () => import('../views/twoCamsGrid.vue')
+      component: () => import('../views/TwoCamsGrid.vue')
     },
     {
       path: '/fourcamsgrid',
       name: 'fourcamsgrid',
-      component: () => import('../views/fourCamsGrid.vue')
+      component: () => import('../views/FourCamsGrid.vue')
     },
     {
       path: '/autoswitcher',
