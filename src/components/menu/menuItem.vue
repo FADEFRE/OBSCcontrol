@@ -1,15 +1,22 @@
 <script setup>
+import { useOBSStore } from '@/store';
+
 const props = defineProps({
     routeName: {
         type: String,
         required: true,
     }
 })
+
+function buttonClicked() {
+    const store = useOBSStore();
+    store.Clicked();
+}
 </script>
 
 <template>
     <router-link :to="{name: props.routeName}" class="menuButton">
-        <p class="intersemibold16">{{ props.routeName }}</p>
+        <p class="intersemibold16" @click="buttonClicked">{{ props.routeName }}</p>
     </router-link>
 </template>
 
@@ -20,7 +27,7 @@ const props = defineProps({
 
 .menuButton{
     display: flex;
-    padding: 1rem 2rem;
+    padding: 1rem 2rem; 
     justify-content: center;
     align-items: center;
     gap: 0.5rem;

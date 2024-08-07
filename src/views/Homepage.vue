@@ -1,5 +1,6 @@
 <script setup>
-import topNav from '@/components/menu/topNav.vue';
+import TopNav from '@/components/menu/TopNav.vue';
+import MobileMenu from '@/components/menu/MobileMenu.vue';
 import MenuBlock from '@/components/menu/MenuBlock.vue';
 
 import { onBeforeMount, onUnmounted } from "vue";
@@ -14,7 +15,6 @@ onBeforeMount(() => {
 
 async function before() {
     await connectToObs()
-    const store = useOBSStore();
 }
 
 onUnmounted(() => {
@@ -27,6 +27,7 @@ async function unmount() {
 </script>
 
 <template>
+    <MobileMenu />
     <div>
         <mobileMenu />
         <topNav />

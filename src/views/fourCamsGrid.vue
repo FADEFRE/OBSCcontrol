@@ -1,7 +1,8 @@
 <script setup>
-import topNav from '@/components/menu/topNav.vue';
+import TopNav from '@/components/menu/TopNav.vue';
 import MenuBlock from '@/components/menu/MenuBlock.vue';
-import camSettings from '@/components/settingsPages/camSettings.vue'
+import MobileMenu from '@/components/menu/MobileMenu.vue';
+import CamSettings from '@/components/settingsPages/CamSettings.vue';
 
 import { onBeforeMount, onUnmounted } from "vue";
 import { connectToObs, disconnectFromObs } from '@/obs-websocket/index';
@@ -9,7 +10,6 @@ import { setCurrentScene, getNameOfActiveInScene, muteAll } from '@/obs-websocke
 import { camId, camName } from '@/util/naming.js'
 import { useOBSStore } from '@/store';
 
-import mobileMenu from '@/components/menu/mobileMenu.vue'
 
 
 onBeforeMount(() => {
@@ -34,27 +34,22 @@ async function unmount() {
     await disconnectFromObs();
 }
 
-async function test() {
-    muteAll()
-    getNameOfActiveInScene("Slot_1");
-}
-
 </script>
 
 <template>
-    <mobileMenu />
+    <MobileMenu />
     <div class="page_content_holder">
-        <topNav />
+        <TopNav />
         <div class="sidenav">
             <MenuBlock class="menuDisplay"/>
             <div class=settingsarea>
                 <div class="camsWrapper">
-                    <camSettings :camSlotId="camId[1]" :camSlotName="camName[1]" />
-                    <camSettings :camSlotId="camId[2]" :camSlotName="camName[2]" />
+                    <CamSettings :camSlotId="camId[1]" :camSlotName="camName[1]" />
+                    <CamSettings :camSlotId="camId[2]" :camSlotName="camName[2]" />
                 </div>
                 <div class="camsWrapper">
-                    <camSettings :camSlotId="camId[3]" :camSlotName="camName[3]" />
-                    <camSettings :camSlotId="camId[4]" :camSlotName="camName[4]" />
+                    <CamSettings :camSlotId="camId[3]" :camSlotName="camName[3]" />
+                    <CamSettings :camSlotId="camId[4]" :camSlotName="camName[4]" />
                 </div>
             </div>
         </div>

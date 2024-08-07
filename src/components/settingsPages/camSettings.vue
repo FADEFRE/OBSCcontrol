@@ -33,7 +33,7 @@ onMounted(() => {
         const store = useOBSStore()
         d.classList.add("is-inactive");
         setTimeout(() => {
-            if (store.getCurrentSound) {
+            if (store.getCurrentSound !== "") {
                 d.classList.replace("is-inactive", "is-active");
             }
         }, 50);

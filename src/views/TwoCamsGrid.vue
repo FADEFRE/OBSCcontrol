@@ -1,15 +1,16 @@
 <script setup>
-import topNav from '@/components/menu/topNav.vue';
+import TopNav from '@/components/menu/TopNav.vue';
 import MenuBlock from '@/components/menu/MenuBlock.vue';
-import camSettings from '@/components/settingsPages/camSettings.vue'
+import MobileMenu from '@/components/menu/MobileMenu.vue'
+import CamSettings from '@/components/settingsPages/CamSettings.vue'
 
 import { onBeforeMount, onUnmounted } from "vue";
 import { connectToObs, disconnectFromObs } from '@/obs-websocket/index';
 import { camId, camName } from '@/util/naming.js'
 import { useOBSStore } from '@/store';
 
-import { setCurrentScene, muteAll } from '@/obs-websocket/request.js'
-import mobileMenu from '@/components/menu/mobileMenu.vue'
+import { setCurrentScene, requestScenes, muteAll } from '@/obs-websocket/request.js'
+
 
 onBeforeMount(() => {
     before()
@@ -17,10 +18,20 @@ onBeforeMount(() => {
 
 async function before() {
     await connectToObs()
-    await setCurrentScene("2_Cam_Grid")
-    await muteAll()
-    const store = useOBSStore();
-    store.setCurrentSound("")
+    await requestScenes()
+    const store = useOBSStore()
+    if (store.wasButtonClicked) {
+        if (store.getCurrentScene !== "2_Cam_Grid") {
+            await setCurrentScene("2_Cam_Grid")
+            await muteAll()
+            const store = useOBSStore()
+            store.setCurrentSound("")
+        }
+        
+    }
+    else {
+        await setAllCurrentActiveAgain()
+    }
 }
 
 onUnmounted(() => {
@@ -34,15 +45,15 @@ async function unmount() {
 </script>
 
 <template>
-    <mobileMenu />
+    <MobileMenu />
     <div class="page_content_holder">
-        <topNav />
+        <TopNav />
         <div class="sidenav">
             <MenuBlock class="menuDisplay"/>
             <div class=settingsarea>
                 <div class="camsWrapper">
-                    <camSettings :camSlotId="camId[1]" :camSlotName="camName[1]" />
-                    <camSettings :camSlotId="camId[2]" :camSlotName="camName[2]" />
+                    <CamSettings :camSlotId="camId[1]" :camSlotName="camName[1]" />
+                    <CamSettings :camSlotId="camId[2]" :camSlotName="camName[2]" />
                 </div>
             </div>
         </div>
