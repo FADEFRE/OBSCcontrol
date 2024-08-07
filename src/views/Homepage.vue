@@ -7,7 +7,7 @@ import { onBeforeMount, onUnmounted } from "vue";
 import { connectToObs, disconnectFromObs } from '@/obs-websocket/index';
 import { useOBSStore } from '@/store';
 
-import mobileMenu from '@/components/menu/mobileMenu.vue'
+import mobileMenu from '@/components/menu/MobileMenu.vue'
 
 onBeforeMount(() => {
     before()
@@ -28,7 +28,7 @@ async function unmount() {
 
 <template>
     <MobileMenu />
-    <div>
+    <div class="page_content_holder">
         <mobileMenu />
         <topNav />
         <div class="sidenav">

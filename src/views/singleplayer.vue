@@ -52,28 +52,4 @@ async function unmount() {
 @use '../assets/styles/util' as *;
 @use '../assets/styles/global' as *;
 @use '../assets/styles/components' as *;
-
-.camsWrapper{
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-}
-
-.sidenav{
-    display: flex;
-    align-items: flex-start;
-    gap: 2rem;
-    flex: 1 0 0;
-    align-self: stretch;
-}
-
-// Mobile
-@media only screen and (max-width: 600px) {
-    .sidenav{
-        flex-direction: column;
-    }
-    .settingsarea{
-        min-width: 100%;
-    }
-}
 </style>

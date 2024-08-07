@@ -48,13 +48,36 @@ ul {
   padding-top: 2rem;
 }
 
-.menuDisplay{
-  display:none
+.camsWrapper{
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.sidenav{
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  align-self: stretch;
 }
 
 // Mobile
 @media only screen and (max-width: 600px) {
   .menuDisplay{
     display: none;
+}
+
+.sidenav{
+  flex-direction: column;
+  width: 100%;
+}
+
+.settingsarea{
+  min-width: 100%;
+}
+
+.camsWrapper{
+  width: 100%;
+  flex-direction: column;
 }
 }

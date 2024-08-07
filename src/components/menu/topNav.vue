@@ -56,7 +56,8 @@ onUnmounted(() => {
     justify-content: space-between;
     align-items: center;
     align-self: stretch;
-    width: 100%;    
+    width: 100%;
+    padding-bottom: 2rem;    
 }
 
 .topNavText{

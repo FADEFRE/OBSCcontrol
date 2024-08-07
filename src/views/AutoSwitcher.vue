@@ -58,24 +58,6 @@ async function unmount() {
 @use '../assets/styles/global' as *;
 @use '../assets/styles/components' as *;
 
-.sidenav{
-    display: flex;
-    align-items: flex-start;
-    gap: 2rem;
-    flex: 1 0 0;
-    align-self: stretch;
-}
-
-.settingsarea{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-    flex: 1 0 0;
-    align-self: stretch;
-    height: 100%;
-}
-
 .autoSwitcherInput{
     border-radius: .5rem;
     overflow: hidden;
@@ -107,12 +89,6 @@ async function unmount() {
 
 // Mobile
 @media only screen and (max-width: 600px) {
-    .sidenav{
-        flex-direction: column;
-    }
-    .settingsarea{
-        min-width: 100%;
-    }
     .autoSwitcherInput{
         width: 100%;
     }
