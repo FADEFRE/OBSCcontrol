@@ -120,7 +120,7 @@ async function setSelectedView() {
                 placeholder="Select View" 
                 class="camSettingsDropdown" 
                 @change="setSelectedView" 
-            /> 
+            />
         </div>
     </div>
 </template>

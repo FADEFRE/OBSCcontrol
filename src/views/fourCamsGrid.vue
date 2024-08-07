@@ -11,7 +11,6 @@ import { camId, camName } from '@/util/naming.js'
 import { useOBSStore } from '@/store';
 
 
-
 onBeforeMount(() => {
     before()
 })
