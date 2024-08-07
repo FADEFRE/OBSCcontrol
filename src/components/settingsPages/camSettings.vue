@@ -6,6 +6,8 @@ import { setSceneItemActive } from '@/obs-websocket/buttonLogic';
 import { useOBSStore } from '@/store';
 import { camId } from '@/util/naming.js'
 
+import CustomDropdown from '@/components/CustomDropdown.vue'
+
 
 const props = defineProps({
     camSlotId: {
@@ -118,7 +120,7 @@ async function setSelectedView() {
                 placeholder="Select View" 
                 class="camSettingsDropdown" 
                 @change="setSelectedView" 
-            />   
+            /> 
         </div>
     </div>
 </template>

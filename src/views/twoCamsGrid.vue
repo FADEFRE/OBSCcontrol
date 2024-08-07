@@ -38,7 +38,7 @@ async function unmount() {
     <div class="page_content_holder">
         <topNav />
         <div class="sidenav">
-            <MenuBlock />
+            <MenuBlock class="menuDisplay"/>
             <div class=settingsarea>
                 <div class="camsWrapper">
                     <camSettings :camSlotId="camId[1]" :camSlotName="camName[1]" />
@@ -81,5 +81,6 @@ async function unmount() {
     .camsWrapper{
         width: 100%;
     }
+
 }
 </style>

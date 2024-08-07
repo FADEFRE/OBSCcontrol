@@ -6,6 +6,7 @@ import { onBeforeMount, onUnmounted } from "vue";
 import { connectToObs, disconnectFromObs } from '@/obs-websocket/index';
 import { useOBSStore } from '@/store';
 
+import mobileMenu from '@/components/menu/mobileMenu.vue'
 
 onBeforeMount(() => {
     before()
@@ -27,14 +28,10 @@ async function unmount() {
 
 <template>
     <div>
+        <mobileMenu />
         <topNav />
         <div class="sidenav">
-            <MenuBlock />
-            <div class=settingsarea>
-                <div class="camsWrapper">
-                    <!---   <camSettings :camSlotId="camId[0]" :camSlotName="camName[0]" /> -->
-                </div>
-            </div>
+            <MenuBlock class="homeNav" />
         </div>
     </div>
 </template>
@@ -44,38 +41,7 @@ async function unmount() {
 @use '../assets/styles/global' as *;
 @use '../assets/styles/components' as *;
 
-.camsWrapper{
+.homeNav{
     display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-}
-
-.sidenav{
-    display: flex;
-    align-items: flex-start;
-    gap: 2rem;
-    flex: 1 0 0;
-    align-self: stretch;
-}
-
-.settingsarea{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    flex: 1 0 0;
-    align-self: stretch;
-    height: 100%;
-}
-
-// Mobile
-@media only screen and (max-width: 600px) {
-    .sidenav{
-        flex-direction: column;
-    }
-    .settingsarea{
-        min-width: 100%;
-    }
 }
 </style>

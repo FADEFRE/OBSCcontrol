@@ -36,7 +36,7 @@ async function unmount() {
     <div class="page_content_holder">
         <topNav />
         <div class="sidenav">
-            <MenuBlock />
+            <MenuBlock class="menuDisplay"/>
             <div class=settingsarea>
                 <div class="switcherContentWrap">
                     <InputNumber class="autoSwitcherInput" v-model="value3" inputId="horizontal-buttons" suffix=" sek." :min="30" showButtons buttonLayout="horizontal" :step="30" mode="decimal" />
