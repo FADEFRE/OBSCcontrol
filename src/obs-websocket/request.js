@@ -19,7 +19,7 @@ async function requestScenes() {
     }
 }
 
-async function requestActiveSceneObs() {
+async function requestNameActiveSceneObs() {
     try {
         const response = await obsConnection.call('GetSceneList');
         const store = useOBSStore();
@@ -203,11 +203,12 @@ async function unMuteAllOfPerson(slot) {
 async function setAllCurrentActiveAgain() {
     const store = useOBSStore();
     try {
-        const currentScene = await getCurrentSceneName()
+        const currentScene = await requestNameActiveSceneObs()
         if (currentScene !== "Solo_Cam_Grid") {
             const slots = await getSceneItems(currentScene)
             for (let index = 0; index < slots.length; index++) {
                 const slot = slots[index];
+                console.log(slot.name)
                 const people = await getSceneItems(slot.name)
                 for (let jndex = 0; jndex < people.length; jndex++) {
                     const breaker = false

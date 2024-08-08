@@ -6,7 +6,7 @@ import CamSettings from '@/components/settingsPages/CamSettings.vue';
 
 import { onBeforeMount, onUnmounted } from "vue";
 import { connectToObs, disconnectFromObs } from '@/obs-websocket/index';
-import { setCurrentScene, getNameOfActiveInScene, muteAll } from '@/obs-websocket/request.js'
+import { setCurrentScene, muteAll } from '@/obs-websocket/request.js'
 import { camId, camName } from '@/util/naming.js'
 import { useOBSStore } from '@/store';
 
