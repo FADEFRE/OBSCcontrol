@@ -226,6 +226,9 @@ async function setAllCurrentActiveAgain() {
 }
 
 async function helperAllCurrentActiveAgain(name) {
+    if (name === "Background") {
+        return false
+    }
     console.log("helper1" + name)
     try {
         console.log("helper1try" + name)
@@ -315,6 +318,9 @@ async function findAllActiveInObs() {
 }
 
 async function helperFindAllActiveInObs(name) {
+    if (name === "Background") {
+        return false
+    }
     console.log("helper2" + name)
     try {
         console.log("helper2try" + name)
