@@ -227,4 +227,5 @@ export {
     muteAll,
     getNameOfActiveInScene,
     unMuteAllOfPerson,
+    setAllCurrentActiveAgain,
 };
