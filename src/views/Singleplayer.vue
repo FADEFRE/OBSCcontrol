@@ -2,7 +2,7 @@
 import TopNav from '@/components/menu/TopNav.vue';
 import MenuBlock from '@/components/menu/MenuBlock.vue';
 import MobileMenu from '@/components/menu/MobileMenu.vue'
-import CamSettings from '@/components/settingsPages/camSettings.vue'
+import CamSettings from '@/components/settingsPages/CamSettings.vue'
 
 import { onBeforeMount, onUnmounted } from "vue";
 import { connectToObs, disconnectFromObs } from '@/obs-websocket/index';
