@@ -229,6 +229,7 @@ async function helperAllCurrentActiveAgain(name) {
     try {
         console.log(name)
         const people = await getSceneItems(name)
+        const nobody = true
         for (let index = 0; index < people.length; index++) {
             const breaker = false
             const personScene = people[index];
@@ -237,10 +238,12 @@ async function helperAllCurrentActiveAgain(name) {
                 const element = partsOfPerson[index];
                 try {
                     const response = await obsConnection.call('GetInputMute', {inputName: element.name});
+
                     if (response.inputMuted) {
                         await obsConnection.call('SetInputMute', {inputName: element.name, inputMuted: true});
                     }
                     else {
+                        nobody = false
                         await obsConnection.call('SetInputMute', {inputName: element.name, inputMuted: false});
                         store.setCurrentSoundPerson(personScene.name)
                         store.setCurrentSound(slot.name)
@@ -249,6 +252,10 @@ async function helperAllCurrentActiveAgain(name) {
                 } catch (error) {
     
                 }
+            }
+
+            if (nobody) {
+                store.setCurrentSoundPerson("")
             }
     
             if (breaker) {
