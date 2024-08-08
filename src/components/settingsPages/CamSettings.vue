@@ -96,9 +96,9 @@ async function refreshSlots() {
     d.classList.remove("is-inactive");
     d.classList.remove("is-active");
     findAllActiveInObs()
-    const ViewInSlot = await getNameOfActiveInScene(props.camSlotName)
+    const ViewInSlot = await getNameOfActiveInScene(props.camSlotId)
     d.classList.add("is-inactive");
-    if (store.getCurrentSound === props.camSlotName) {
+    if (store.getCurrentSound === props.camSlotId) {
         d.classList.replace("is-inactive", "is-active");
     }
 
