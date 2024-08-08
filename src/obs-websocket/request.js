@@ -13,6 +13,7 @@ async function requestScenes() {
             store.setListOfScenes(response.scenes);
             store.setNumberOfScenes(response.scenes.length)
         }
+        console.log(response.scenes)
         return response.scenes;
     } catch(error) {
         errorHandler(error);
