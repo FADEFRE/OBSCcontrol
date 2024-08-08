@@ -190,6 +190,7 @@ async function setAllCurrentActiveAgain() {
     try {
         await getCurrentSceneName()
         const people = await getSceneItems("Slot_1")
+        const store = useOBSStore();
         for (let index = 0; index < people.length; index++) {
             const personScene = people[index];
             const partsOfPerson = await getSceneItems(personScene.name)
@@ -202,6 +203,7 @@ async function setAllCurrentActiveAgain() {
                     }
                     else {
                         await obsConnection.call('SetInputMute', {inputName: element.name, inputMuted: false});
+                        store.setCurrentSoundPerson(personScene.name)
                     }
                 } catch (error) {
 
@@ -212,6 +214,33 @@ async function setAllCurrentActiveAgain() {
         errorHandler(error);
     }
 }
+
+async function findAllActiveInObs() {
+    try {
+        await getCurrentSceneName()
+        const people = await getSceneItems("Slot_1")
+        const store = useOBSStore();
+        for (let index = 0; index < people.length; index++) {
+            const personScene = people[index];
+            const partsOfPerson = await getSceneItems(personScene.name)
+            for (let index = 0; index < partsOfPerson.length; index++) {
+                const element = partsOfPerson[index];
+                try {
+                    const response = await obsConnection.call('GetInputMute', {inputName: element.name});
+                    if (!response.inputMuted) {
+                        store.setCurrentSoundPerson(personScene.name)
+                    }
+                } catch (error) {
+
+                }
+            }
+        }
+    } catch(error) {
+        errorHandler(error);
+    }
+}
+
+
 
 export {
     requestScenes,
@@ -228,4 +257,5 @@ export {
     getNameOfActiveInScene,
     unMuteAllOfPerson,
     setAllCurrentActiveAgain,
+    findAllActiveInObs,
 };

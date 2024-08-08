@@ -7,6 +7,7 @@ export const useOBSStore = defineStore('obs', {
         numberOfScenes: 0,
         status: false,
         currentSound: "",
+        currentSoundPerson: "",
         wasClicked: false,
     }),
     
@@ -20,6 +21,7 @@ export const useOBSStore = defineStore('obs', {
         getNumberOfScenes() { return this.numberOfScenes },
         getStatus() { return this.status },
         getCurrentSound() { return this.currentSound },
+        getCurrentSoundPerson() { return this.currentSoundPerson },
         wasButtonClicked() { return this.wasClicked },
     },
 
@@ -29,6 +31,7 @@ export const useOBSStore = defineStore('obs', {
         setNumberOfScenes(numberOfScenes) { this.numberOfScenes = numberOfScenes },
         setStatus(status) { this.status = status },
         setCurrentSound(currentSound) { this.currentSound = currentSound },
+        setCurrentSoundPerson(currentSoundPerson) { this.currentSoundPerson = currentSoundPerson },
         Clicked() { this.wasClicked = true },
         removeClicked() { this.wasClicked = false },
         getIndexOfScene(requestedSceneName) { 

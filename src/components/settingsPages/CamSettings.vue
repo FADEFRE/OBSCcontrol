@@ -1,7 +1,7 @@
 <script setup>
 import { disconnectFromObs } from '@/obs-websocket/index';
 import { ref, onMounted, onBeforeUnmount, toRaw } from "vue";
-import { requestScenes, getSceneItems, unMuteAllOfPerson, muteAll } from '@/obs-websocket/request';
+import { requestScenes, getSceneItems, unMuteAllOfPerson, muteAll, findAllActiveInObs, getNameOfActiveInScene } from '@/obs-websocket/request';
 import { setSceneItemActive } from '@/obs-websocket/buttonLogic';
 import { useOBSStore } from '@/store';
 import { camId } from '@/util/naming.js'
@@ -25,6 +25,7 @@ const store = useOBSStore();
 let viewOptions = []
 const viewOptionsRef = ref([])
 const selectedView = ref()
+const selectedPerson = ""
 
 onMounted(() => {
     setTimeout(() => {
@@ -44,6 +45,7 @@ async function mount() {
     await requestScenes()
     viewOptions = await getSceneItems(props.camSlotId)
     viewOptionsRef.value = viewOptions
+    await refreshSlots()
 }
 
 function update() {
@@ -89,11 +91,16 @@ async function disableAllMic() {
     }
 }
 
-async function refreshSlots(params) {
+async function refreshSlots() {
     const d = document.getElementById(props.camSlotId)
     d.classList.remove("is-inactive");
     d.classList.remove("is-active");
-
+    findAllActiveInObs()
+    const ViewInSlot = await getNameOfActiveInScene(props.camSlotName)
+    d.classList.add("is-inactive");
+    if (store.getCurrentSound === props.camSlotName) {
+        d.classList.replace("is-inactive", "is-active");
+    }
 
 }
 
