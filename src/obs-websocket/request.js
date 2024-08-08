@@ -298,6 +298,8 @@ async function findAllActiveInObs() {
         } 
         else {
             const slots = await getSceneItems(currentScene)
+            console.log("slots")
+            console.log(slots)
             for (let index = 0; index < slots.length; index++) {
                 const slot = slots[index];
                 console.log(slot.name)
