@@ -234,6 +234,7 @@ async function helperAllCurrentActiveAgain(name) {
         console.log("helper1try" + name)
         const people = await getSceneItems(name)
         const nobody = true
+        const store = useOBSStore();
         for (let index = 0; index < people.length; index++) {
             const breaker = false
             const personScene = people[index];
