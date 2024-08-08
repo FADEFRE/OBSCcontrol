@@ -1,5 +1,5 @@
 <script setup>
-import CamSettings from '@/components/settingsPages/CamSettings.vue';
+import CamSettings from '@/components/settingsPages/camSettings.vue';
 import { connectToObs } from '@/obs-websocket/index';
 import { onBeforeMount } from "vue";
 
