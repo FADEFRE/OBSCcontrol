@@ -25,9 +25,6 @@ async function disconnectFromObs() {
 }
 
 
-async function errorHandler(error) {
-    errorHandler(error, "", "")
-}
 
 async function errorHandler(error, msg, msg2) {
     const store = useOBSStore()

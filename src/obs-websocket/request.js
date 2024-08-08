@@ -227,6 +227,7 @@ async function setAllCurrentActiveAgain() {
 
 async function helperAllCurrentActiveAgain(name) {
     try {
+        console.log(name)
         const people = await getSceneItems(name)
         for (let index = 0; index < people.length; index++) {
             const breaker = false
