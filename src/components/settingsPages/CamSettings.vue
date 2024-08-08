@@ -33,7 +33,7 @@ onMounted(() => {
         const store = useOBSStore()
         d.classList.add("is-inactive");
         setTimeout(() => {
-            if (store.getCurrentSound !== "") {
+            if (store.getCurrentSound === props.camSlotId) {
                 d.classList.replace("is-inactive", "is-active");
             }
         }, 50);
@@ -89,6 +89,13 @@ async function disableAllMic() {
     }
 }
 
+async function refreshSlots(params) {
+    const d = document.getElementById(props.camSlotId)
+    d.classList.remove("is-inactive");
+    d.classList.remove("is-active");
+
+
+}
 
 async function setSelectedView() {
     const raw = toRaw(selectedView.value)
