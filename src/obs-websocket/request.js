@@ -227,8 +227,8 @@ async function setAllCurrentActiveAgain() {
 }
 
 async function helperAllCurrentActiveAgain(name) {
+    console.log("helper1" + name)
     try {
-        console.log(name)
         const people = await getSceneItems(name)
         const nobody = true
         for (let index = 0; index < people.length; index++) {
@@ -313,8 +313,8 @@ async function findAllActiveInObs() {
 }
 
 async function helperFindAllActiveInObs(name) {
+    console.log("helper2" + name)
     try {
-        console.log(name)
         const people = await getSceneItems(name)
         
         for (let index = 0; index < people.length; index++) {
