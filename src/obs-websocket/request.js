@@ -13,7 +13,6 @@ async function requestScenes() {
             store.setListOfScenes(response.scenes);
             store.setNumberOfScenes(response.scenes.length)
         }
-        console.log(response.scenes)
         return response.scenes;
     } catch(error) {
         errorHandler(error);
@@ -229,6 +228,7 @@ async function setAllCurrentActiveAgain() {
 async function helperAllCurrentActiveAgain(name) {
     console.log("helper1" + name)
     try {
+        console.log("helper1try" + name)
         const people = await getSceneItems(name)
         const nobody = true
         for (let index = 0; index < people.length; index++) {
@@ -315,6 +315,7 @@ async function findAllActiveInObs() {
 async function helperFindAllActiveInObs(name) {
     console.log("helper2" + name)
     try {
+        console.log("helper2try" + name)
         const people = await getSceneItems(name)
         
         for (let index = 0; index < people.length; index++) {
