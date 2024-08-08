@@ -9,7 +9,7 @@ import { connectToObs, disconnectFromObs } from '@/obs-websocket/index';
 import { camId, camName } from '@/util/naming.js'
 import { useOBSStore } from '@/store';
 
-import { setCurrentScene, requestScenes, muteAll } from '@/obs-websocket/request.js'
+import { setCurrentScene, setAllCurrentActiveAgain, requestScenes, muteAll } from '@/obs-websocket/request.js'
 
 
 onBeforeMount(() => {
@@ -24,10 +24,9 @@ async function before() {
         if (store.getCurrentScene !== "2_Cam_Grid") {
             await setCurrentScene("2_Cam_Grid")
             await muteAll()
-            const store = useOBSStore()
             store.setCurrentSound("")
         }
-        
+        store.removeClicked()
     }
     else {
         await setAllCurrentActiveAgain()
