@@ -187,15 +187,49 @@ async function unMuteAllOfPerson(slot) {
 }
 
 async function setAllCurrentActiveAgain() {
+    const store = useOBSStore();
     try {
-        await getCurrentSceneName()
+        const currentScene = await getCurrentSceneName()
+        if (currentScene !== "Solo_Cam_Grid") {
+            const slots = await getSceneItems(currentScene)
+            for (let index = 0; index < slots.length; index++) {
+                const slot = slots[index];
+                const people = await getSceneItems(slot.name)
+                for (let jndex = 0; jndex < people.length; jndex++) {
+                    const breaker = false
+                    const personScene = people[index];
+                    const partsOfPerson = await getSceneItems(personScene.name)
+                    for (let jndex = 0; jndex < partsOfPerson.length; jndex++) {
+                        const element = partsOfPerson[jndex];
+                        try {
+                            const response = await obsConnection.call('GetInputMute', {inputName: element.name});
+                            if (response.inputMuted) {
+                                await obsConnection.call('SetInputMute', {inputName: element.name, inputMuted: true});
+                            }
+                            else {
+                                await obsConnection.call('SetInputMute', {inputName: element.name, inputMuted: false});
+                                store.setCurrentSoundPerson(personScene.name)
+                                store.setCurrentSound(slot.name)
+                                breaker = true
+                            }
+                        } catch (error) {
+
+                        }
+                    }
+
+                    if (breaker) {
+                        return true
+                    }
+                }
+            }
+        }
         const people = await getSceneItems("Slot_1")
         const store = useOBSStore();
         for (let index = 0; index < people.length; index++) {
             const personScene = people[index];
             const partsOfPerson = await getSceneItems(personScene.name)
-            for (let index = 0; index < partsOfPerson.length; index++) {
-                const element = partsOfPerson[index];
+            for (let jndex = 0; jndex < partsOfPerson.length; jndex++) {
+                const element = partsOfPerson[jndex];
                 try {
                     const response = await obsConnection.call('GetInputMute', {inputName: element.name});
                     if (response.inputMuted) {
