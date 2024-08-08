@@ -246,7 +246,7 @@ async function helperAllCurrentActiveAgain(name) {
                         nobody = false
                         await obsConnection.call('SetInputMute', {inputName: element.name, inputMuted: false});
                         store.setCurrentSoundPerson(personScene.name)
-                        store.setCurrentSound(slot.name)
+                        store.setCurrentSound(name)
                         breaker = true
                     }
                 } catch (error) {
@@ -269,7 +269,11 @@ async function helperAllCurrentActiveAgain(name) {
 
 async function findAllActiveInObs() {
     try {
+
+        await requestScenes();
         await getCurrentSceneName()
+        const currentScene = await requestNameActiveSceneObs()
+
         const people = await getSceneItems("Slot_1")
         const store = useOBSStore();
         for (let index = 0; index < people.length; index++) {
@@ -287,10 +291,61 @@ async function findAllActiveInObs() {
                 }
             }
         }
+
+        if (currentScene === "Solo_Cam_Grid") {
+            helperFindAllActiveInObs("Solo_Cam_Grid")
+        } 
+        else {
+            const slots = await getSceneItems(currentScene)
+            for (let index = 0; index < slots.length; index++) {
+                const slot = slots[index];
+                console.log(slot.name)
+
+                helperFindAllActiveInObs(slot.name)
+            }
+        }
+
+
     } catch(error) {
         errorHandler(error);
     }
 }
+
+async function helperFindAllActiveInObs(name) {
+    try {
+        console.log(name)
+        const people = await getSceneItems(name)
+        
+        for (let index = 0; index < people.length; index++) {
+            const breaker = false
+            const personScene = people[index];
+            const partsOfPerson = await getSceneItems(personScene.name)
+            for (let index = 0; index < partsOfPerson.length; index++) {
+                const element = partsOfPerson[index];
+                try {
+                    const response = await obsConnection.call('GetInputMute', {inputName: element.name});
+
+                    if (response.inputMuted) {
+                        await obsConnection.call('SetInputMute', {inputName: element.name, inputMuted: true});
+                    }
+                    else {
+                        await obsConnection.call('SetInputMute', {inputName: element.name, inputMuted: false});
+                        store.setCurrentSound(name)
+                        breaker = true
+                    }
+                } catch (error) {
+    
+                }
+            }
+            if (breaker) {
+                return true
+            }
+        }
+    } catch (error) {
+        errorHandler(error, name);
+    }
+}
+
 
 
 
