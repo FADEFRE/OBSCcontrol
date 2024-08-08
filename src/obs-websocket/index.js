@@ -25,7 +25,7 @@ async function disconnectFromObs() {
 }
 
 
-async function errorHandler(error) {
+async function errorHandler(error, msg) {
     const store = useOBSStore()
     store.setStatus(false)
     if (error.message === "Not connected" && counter < 3) {
@@ -34,7 +34,7 @@ async function errorHandler(error) {
         await connectToObs();
     }
     else {
-        console.error('Error', error.code, error.message);
+        console.error('Error' + msg, error.code, error.message);
     }
 }
 

@@ -255,7 +255,7 @@ async function helperAllCurrentActiveAgain(name) {
             }
         }
     } catch (error) {
-        errorHandler(error);
+        errorHandler(error, name);
     }
 }
 
